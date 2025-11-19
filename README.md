@@ -48,17 +48,17 @@ nano .env
 
 ```bash
 # Build and start all services
-docker-compose up -d --build
+docker compose up -d --build
 
 # Check service status
-docker-compose ps
+docker compose ps
 ```
 
 ### 3. Initialize Airflow
 
 ```bash
 # Create admin user (first time only)
-docker-compose exec airflow-apiserver airflow users create \
+docker compose exec airflow-apiserver airflow users create \
     --username admin \
     --password admin \
     --firstname Admin \
@@ -176,7 +176,7 @@ YouTube API                   Grafana Dashboards
 
 ```bash
 # Submit Spark job
-docker-compose exec spark-master spark-submit \
+docker compose exec spark-master spark-submit \
     --master spark://spark-master:7077 \
     /opt/airflow/scripts/spark_processing.py
 ```
@@ -185,7 +185,7 @@ docker-compose exec spark-master spark-submit \
 
 ```bash
 # Trigger stock market ETL
-docker-compose exec airflow-apiserver airflow dags trigger stock_market_etl_pipeline
+docker compose exec airflow-apiserver airflow dags trigger stock_market_etl_pipeline
 ```
 
 ### Database Connections
@@ -214,11 +214,11 @@ client = MongoClient('mongodb://admin:password@mongodb:27017/')
 ### Service Health Checks
 ```bash
 # Check all services
-docker-compose ps
+docker compose ps
 
 # View logs
-docker-compose logs airflow-scheduler
-docker-compose logs kafka
+docker compose logs airflow-scheduler
+docker compose logs kafka
 ```
 
 ## 🔄 Extending the Project
@@ -262,14 +262,14 @@ docker-compose logs kafka
 
 ```bash
 # View specific service logs
-docker-compose logs airflow-scheduler
-docker-compose logs kafka
+docker compose logs airflow-scheduler
+docker compose logs kafka
 
 # Debug DAG execution
-docker-compose exec airflow-apiserver airflow tasks list stock_market_etl_pipeline
+docker compose exec airflow-apiserver airflow tasks list stock_market_etl_pipeline
 
 # Check database connectivity
-docker-compose exec postgres psql -U airflow -d airflow
+docker compose exec postgres psql -U airflow -d airflow
 ```
 
 ## 📝 License
