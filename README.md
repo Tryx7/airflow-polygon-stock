@@ -41,7 +41,7 @@ Data Generator → Kafka Producer → Kafka Topic → Kafka Consumer
 ### 1. Start Infrastructure
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 This starts:
@@ -128,7 +128,7 @@ employees = gen(5)  # Generate 5 employee records
 
 1. **Connection Errors**: Ensure Docker containers are running
    ```bash
-   docker-compose ps
+   docker compose ps
    ```
 
 2. **Port Conflicts**: Check if ports 9092, 9094, 9000, 3000 are available
@@ -143,13 +143,13 @@ employees = gen(5)  # Generate 5 employee records
 ### Reset Environment
 ```bash
 # Stop and remove containers
-docker-compose down
+docker compose down
 
 # Clean volumes (removes all data)
-docker-compose down -v
+docker compose down -v
 
 # Restart fresh
-docker-compose up -d
+docker compose up -d
 ```
 
 ## 📈 Monitoring
